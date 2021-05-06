@@ -7,8 +7,12 @@ Caso precise encontrar os enunciados originais [Clique aqui](https://wiki.python
 
 Contatos : 
 [gilcllyscosta@gmail.com](gilcllyscosta@gmail.com)
+
 Twitter : @Gilcllys_costa
+
 Facebook : Gilcllys Costa
+
 Linkedin : [Gilcllys Costa](https://www.linkedin.com/in/gilcllys-costa-11b62316a/)
+
 Instagram : gilcllys_costa
 

@@ -6,7 +6,7 @@
 Caso precise encontrar os enunciados originais [Clique aqui](https://wiki.python.org.br/ListaDeExercicios)
 
 Contatos : 
-[gilcllyscosta@gmail.com](gilcllyscosta@gmail.com)
+gilcllyscosta@gmail.com
 
 Twitter : @Gilcllys_costa
 

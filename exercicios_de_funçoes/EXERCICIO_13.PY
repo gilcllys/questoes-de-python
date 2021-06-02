@@ -7,12 +7,12 @@ def desenhar_retangulo (linhas, colunas):
     sinais = ["+" , "−" , "|" ]
     forma = int(input(
 """
-    Como gostaria de desenhar o seu retângulo:
-    (0) +
-    (1) −
-    (2) |
-    
-    Digite o código do símbolo para selecionar: """))
+Como gostaria de desenhar o seu retângulo:
+(0) +
+(1) −
+(2) |
+
+Digite o código do símbolo para selecionar: """))
 
     #linha do topo
     for c in range(colunas):

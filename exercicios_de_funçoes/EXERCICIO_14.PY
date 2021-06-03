@@ -9,13 +9,13 @@
 import numpy as np
 from random import*
 
-
+# quatidades de combinações possíveis
 def possibilidades_permutadas(lista):
     multp = 1
     for p in range(1,len(lista) + 1):
         multp = multp * p
     return multp
-
+# embaralhar a lista toda 
 def embaralhar (lista):
     contador = 0
     verif_num = []
@@ -30,26 +30,26 @@ def embaralhar (lista):
             continue 
     return lista_emabaralhada  
     
-
+# modelar a lista no formato de uma matrix 3x3 
 def criar_matrix (lista):
     elementos = np.array(lista)
     matrix = elementos.reshape(3,3)
     return matrix
     
-
+# criar o vetor com a soma total de cada linha [lt1 lt2 lt3]
 def somar_linhas (lista):
     linha = np.sum(lista, axis=1)
     return linha
-
+# criar o vetor com a soma total de cada coluna [ct1 ct2 ct3]
 def somar_coluna (lista):
     coluna = np.sum(lista, axis=0)
     return coluna
-
+# criar dois vetores com os elementos de cada diagonal [d1 d2 d3] , [a_d1,a_d2,a_d3]
 def diagonais(lista):
     diagonal_normal = np.diagonal(lista)
     anti_diagonal = np.fliplr(lista).diagonal()
     return diagonal_normal, anti_diagonal
-
+# 2 números que representam a soma total dos elementos dos vetores da diagonal [d1 d2 d3] = dt e [a_d1,a_d2,a_d3] =a_dt
 def somar_diagonais (diagonal, anti_diagonal):
     somar_diagonal = np.sum(diagonal)
     somar_anti = np.sum(anti_diagonal)

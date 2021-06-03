@@ -6,6 +6,9 @@
 
 #Elabore uma função que identifica e mostra na tela todos os quadrados mágicos com as características acima. Dica: produza todas as combinações possíveis e verifique a soma quando completar cada quadrado. Usar um vetor de 1 a 9 parece ser mais simples que usar uma matriz 3x3.
 
+
+
+# ALGORITMO INCOMPLETO
 import numpy as np
 from random import*
 
@@ -77,6 +80,8 @@ while loop > count:
     #comparando as duas diagonais
     diag_e_anti = np.array_equal(soma_anti,soma_diag) 
     count += 1
+    if lista == [8 ,3 ,4 ,1 ,5 ,9 ,6 ,7 ,2]:
+        print(lista)
 
     if linha_coluna == True and diag_e_anti == True:
         if linha[0] == soma_diag:
@@ -90,4 +95,4 @@ while loop > count:
         matrix = criar_matrix(lista)
     
 
-# arrumar ainda 
+# ALGORITMO INCOMPLETO

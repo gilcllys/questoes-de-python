@@ -62,17 +62,16 @@ def somar_diagonais (diagonal, anti_diagonal):
 # Criando a lista
 lista = [1,2,3,4,5,6,7,8,9]
 # Convertendo para Matrix
-matrix = criar_matrix(lista)
+matrix_nova = criar_matrix(lista)
 count = 0
 loop = possibilidades_permutadas(lista)
 
 while loop > count:
-    
     # soma total das linhas e coluna
-    linha = somar_linhas(matrix)
-    coluna = somar_coluna(matrix)
+    linha = somar_linhas(matrix_nova)
+    coluna = somar_coluna(matrix_nova)
     # vetor com os valores da diagonal
-    diag, anti_diag = diagonais(matrix)
+    diag, anti_diag = diagonais(matrix_nova)
     #soma das diagonais
     soma_diag, soma_anti = somar_diagonais(diag, anti_diag)
     #comparando linha com coluna
@@ -80,19 +79,20 @@ while loop > count:
     #comparando as duas diagonais
     diag_e_anti = np.array_equal(soma_anti,soma_diag) 
     count += 1
+    print(lista)
     if lista == [8 ,3 ,4 ,1 ,5 ,9 ,6 ,7 ,2]:
-        print(lista)
+        print("lista é igual ",lista)
 
     if linha_coluna == True and diag_e_anti == True:
         if linha[0] == soma_diag:
-            print(matrix) 
+            print(matrix_nova) 
             print("")
             lista = embaralhar(lista)
-            matrix = criar_matrix(lista)
+            matrix_nova = criar_matrix(lista)
         
     else:
         lista = embaralhar(lista)
-        matrix = criar_matrix(lista)
+        matrix_nova = criar_matrix(lista)
     
 
 # ALGORITMO INCOMPLETO

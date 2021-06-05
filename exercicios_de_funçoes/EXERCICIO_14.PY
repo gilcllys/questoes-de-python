@@ -40,17 +40,17 @@ def criar_matrix (lista):
     return matrix
     
 # criar o vetor com a soma total de cada linha [lt1 lt2 lt3]
-def somar_linhas (lista):
-    linha = np.sum(lista, axis=1)
+def somar_linhas (matrix):
+    linha = np.sum(matrix, axis=1)
     return linha
 # criar o vetor com a soma total de cada coluna [ct1 ct2 ct3]
-def somar_coluna (lista):
-    coluna = np.sum(lista, axis=0)
+def somar_coluna (matrix):
+    coluna = np.sum(matrix, axis=0)
     return coluna
 # criar dois vetores com os elementos de cada diagonal [d1 d2 d3] , [a_d1,a_d2,a_d3]
-def diagonais(lista):
-    diagonal_normal = np.diagonal(lista)
-    anti_diagonal = np.fliplr(lista).diagonal()
+def diagonais(matrix):
+    diagonal_normal = np.diagonal(matrix)
+    anti_diagonal = np.fliplr(matrix).diagonal()
     return diagonal_normal, anti_diagonal
 # 2 números que representam a soma total dos elementos dos vetores da diagonal [d1 d2 d3] = dt e [a_d1,a_d2,a_d3] =a_dt
 def somar_diagonais (diagonal, anti_diagonal):
@@ -62,16 +62,16 @@ def somar_diagonais (diagonal, anti_diagonal):
 # Criando a lista
 lista = [1,2,3,4,5,6,7,8,9]
 # Convertendo para Matrix
-matrix_nova = criar_matrix(lista)
+matrix = criar_matrix(lista)
 count = 0
 loop = possibilidades_permutadas(lista)
 
 while loop > count:
     # soma total das linhas e coluna
-    linha = somar_linhas(matrix_nova)
-    coluna = somar_coluna(matrix_nova)
+    linha = somar_linhas(matrix)
+    coluna = somar_coluna(matrix)
     # vetor com os valores da diagonal
-    diag, anti_diag = diagonais(matrix_nova)
+    diag, anti_diag = diagonais(matrix)
     #soma das diagonais
     soma_diag, soma_anti = somar_diagonais(diag, anti_diag)
     #comparando linha com coluna
@@ -79,16 +79,16 @@ while loop > count:
     #comparando as duas diagonais
     diag_e_anti = np.array_equal(soma_anti,soma_diag) 
     count += 1
-    print(lista)
+    #print(lista)
     if lista == [8 ,3 ,4 ,1 ,5 ,9 ,6 ,7 ,2]:
         print("lista é igual ",lista)
 
     if linha_coluna == True and diag_e_anti == True:
         if linha[0] == soma_diag:
-            print(matrix_nova) 
+            print(matrix) 
             print("")
             lista = embaralhar(lista)
-            matrix_nova = criar_matrix(lista)
+            matri = criar_matrix(lista)
         
     else:
         lista = embaralhar(lista)

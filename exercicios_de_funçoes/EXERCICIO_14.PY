@@ -20,18 +20,8 @@ def possibilidades_permutadas(lista):
     return multp
 # embaralhar a lista toda 
 def embaralhar (lista):
-    contador = 0
-    verif_num = []
-    lista_emabaralhada = []
-    while len(lista) > contador:
-        cod_num = randint(0,len(lista)-1)
-        if cod_num not in verif_num:
-            verif_num.append(cod_num)
-            contador += 1
-            lista_emabaralhada.append(lista[cod_num])
-        else:
-            continue 
-    return lista_emabaralhada  
+    lista_embaralhada = np.random.permutation(lista)
+    return lista_embaralhada
     
 # modelar a lista no formato de uma matrix 3x3 
 def criar_matrix (lista):
@@ -66,7 +56,7 @@ matrix = criar_matrix(lista)
 count = 0
 loop = possibilidades_permutadas(lista)
 
-while loop > count:
+while loop > count: 
     # soma total das linhas e coluna
     linha = somar_linhas(matrix)
     coluna = somar_coluna(matrix)
@@ -80,19 +70,20 @@ while loop > count:
     diag_e_anti = np.array_equal(soma_anti,soma_diag) 
     count += 1
     #print(lista)
-    if lista == [8 ,3 ,4 ,1 ,5 ,9 ,6 ,7 ,2]:
+    if np.array_equal(lista,[8 ,3 ,4 ,1 ,5 ,9 ,6 ,7 ,2]) == True:
         print("lista é igual ",lista)
 
     if linha_coluna == True and diag_e_anti == True:
-        if linha[0] == soma_diag:
+        elemento_linha = linha[0] 
+        if elemento_linha == soma_diag:
             print(matrix) 
             print("")
             lista = embaralhar(lista)
-            matri = criar_matrix(lista)
+            matrix = criar_matrix(lista)
         
     else:
         lista = embaralhar(lista)
-        matrix_nova = criar_matrix(lista)
+        matrix = criar_matrix(lista)
     
 
 # ALGORITMO INCOMPLETO

@@ -11,12 +11,20 @@ def criar_matrix (lista):
     matrix = elementos.reshape(3,3)
     return matrix
 
+def repetidas (lista,nova_lista):
+    for comp in nova_lista:
+        comparando = np.equal(lista,nova_lista)
+        if comparando == True:
+            valor = True
+            return valor
+            break
+        else:
+            continue
+    
+
+
 # Criando a lista
 lista = [1,2,3,4,5,6,7,8,9]
 # Convertendo para Matrix
 matrix = criar_matrix(lista)
-
-for i in range(10):
-    lista_embaralhada = embaralhar(lista)
-    matrix = criar_matrix(lista_embaralhada)
-    print(matrix)
+nova_lista = [

@@ -70,9 +70,6 @@ while loop > count:
     diag_e_anti = np.array_equal(soma_anti,soma_diag) 
     count += 1
     #print(lista)
-    if np.array_equal(lista,[8 ,3 ,4 ,1 ,5 ,9 ,6 ,7 ,2]) == True:
-        print("lista é igual ",lista)
-
     if linha_coluna == True and diag_e_anti == True:
         elemento_linha = linha[0] 
         if elemento_linha == soma_diag:

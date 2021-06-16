@@ -51,36 +51,6 @@ def somar_diagonais (diagonal, anti_diagonal):
 
 # Criando a lista
 lista = [1,2,3,4,5,6,7,8,9]
-# Convertendo para Matrix
+
 matrix = criar_matrix(lista)
-count = 0
-loop = possibilidades_permutadas(lista)
 
-while loop > count: 
-    # soma total das linhas e coluna
-    linha = somar_linhas(matrix)
-    coluna = somar_coluna(matrix)
-    # vetor com os valores da diagonal
-    diag, anti_diag = diagonais(matrix)
-    #soma das diagonais
-    soma_diag, soma_anti = somar_diagonais(diag, anti_diag)
-    #comparando linha com coluna
-    linha_coluna = np.array_equal(linha,coluna)
-    #comparando as duas diagonais
-    diag_e_anti = np.array_equal(soma_anti,soma_diag) 
-    count += 1
-    #print(lista)
-    if linha_coluna == True and diag_e_anti == True:
-        elemento_linha = linha[0] 
-        if elemento_linha == soma_diag:
-            print(matrix) 
-            print("")
-            lista = embaralhar(lista)
-            matrix = criar_matrix(lista)
-        
-    else:
-        lista = embaralhar(lista)
-        matrix = criar_matrix(lista)
-    
-
-# ALGORITMO INCOMPLETO

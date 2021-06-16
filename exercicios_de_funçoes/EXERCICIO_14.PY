@@ -10,7 +10,7 @@
 
 # ALGORITMO INCOMPLETO
 import numpy as np
-from random import*
+from random import
 
 # quatidades de combinações possíveis
 def possibilidades_permutadas(lista):
@@ -54,3 +54,4 @@ lista = [1,2,3,4,5,6,7,8,9]
 
 matrix = criar_matrix(lista)
 
+print(matrix)

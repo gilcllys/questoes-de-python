@@ -10,7 +10,9 @@
 
 # ALGORITMO INCOMPLETO
 import numpy as np
-from random import
+from random import*
+
+from numpy.lib.index_tricks import AxisConcatenator
 
 # quatidades de combinações possíveis
 def possibilidades_permutadas(lista):
@@ -25,8 +27,7 @@ def embaralhar (lista):
     
 # modelar a lista no formato de uma matrix 3x3 
 def criar_matrix (lista):
-    elementos = np.array(lista)
-    matrix = elementos.reshape(3,3)
+    matrix = lista.reshape(3,3)
     return matrix
     
 # criar o vetor com a soma total de cada linha [lt1 lt2 lt3]
@@ -48,10 +49,19 @@ def somar_diagonais (diagonal, anti_diagonal):
     somar_anti = np.sum(anti_diagonal)
     return somar_diagonal, somar_anti
 
-
+lista = [1,2,3,4,5,6,7,8,9] 
 # Criando a lista
-lista = [1,2,3,4,5,6,7,8,9]
+lista_vetor = np.array([lista])
+novo_vetor = embaralhar(lista)
+cont = 0
+while cont < 10:
+    if novo_vetor in lista_vetor:
+        novo_vetor = embaralhar(lista)
+        continue
+    else:
+        cont =+1
+        consulta = np.append(lista_vetor,[novo_vetor],axis=0)
+        lista_vetor = consulta
+        novo_vetor = embaralhar(lista)
 
-matrix = criar_matrix(lista)
-
-print(matrix)
+print(lista_vetor)

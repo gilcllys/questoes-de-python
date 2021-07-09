@@ -23,7 +23,7 @@ def possibilidades_permutadas(lista):
 # embaralhar a lista toda 
 def embaralhar (lista):
     lista_embaralhada = np.random.permutation(lista)
-    return lista_embaralhada
+    return [lista_embaralhada]
     
 # modelar a lista no formato de uma matrix 3x3 
 def criar_matrix (lista):
@@ -53,15 +53,19 @@ lista = [1,2,3,4,5,6,7,8,9]
 # Criando a lista
 lista_vetor = np.array([lista])
 novo_vetor = embaralhar(lista)
-cont = 0
-while cont < 10:
-    if novo_vetor in lista_vetor:
-        novo_vetor = embaralhar(lista)
-        continue
-    else:
-        cont =+1
-        consulta = np.append(lista_vetor,[novo_vetor],axis=0)
-        lista_vetor = consulta
-        novo_vetor = embaralhar(lista)
 
-print(lista_vetor)
+nova_lista = np.append(lista_vetor,novo_vetor, axis=0)
+print(nova_lista)
+
+for i in range(10):
+    for lista in nova_lista:
+        comparacao = np.array_equal([np.array(lista)],np.array(novo_vetor))
+        if comparacao == True :
+            print (f"{lista} e {novo_vetor}")
+            break
+        else:
+            continue
+    novo_vetor = embaralhar(lista)
+    nova_lista = np.append(lista_vetor,novo_vetor, axis=0)
+    lista_vetor = nova_lista
+print(nova_lista)

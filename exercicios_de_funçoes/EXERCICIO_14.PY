@@ -9,63 +9,71 @@
 
 
 # ALGORITMO INCOMPLETO
+from typing import Tuple
 import numpy as np
 from random import*
+import itertools
 
-from numpy.lib.index_tricks import AxisConcatenator
+from numpy.core.fromnumeric import diagonal
 
-# quatidades de combinações possíveis
-def possibilidades_permutadas(lista):
-    multp = 1
-    for p in range(1,len(lista) + 1):
-        multp = multp * p
-    return multp
-# embaralhar a lista toda 
-def embaralhar (lista):
-    lista_embaralhada = np.random.permutation(lista)
-    return [lista_embaralhada]
+
+class Matrix:
+    def __init__(self):
+        self.lista = [1,2,3,4,5,6,7,8,9]
+
+    def CriarMatrix (self,matrix):
+        self.matrix =  matrix
+        vetor = np.array(self.matrix)
+        nova_matrix = vetor.reshape(3,3)
+        return nova_matrix
+
     
-# modelar a lista no formato de uma matrix 3x3 
-def criar_matrix (lista):
-    matrix = lista.reshape(3,3)
-    return matrix
+    def Embaralhar (self):
+        valores_permutados = itertools.permutations(self.lista)
+        lista = list(valores_permutados)
+        return lista
+
+    def SomarLinhasHorizontais(self, matrix):
+        self.matrix = matrix
+        return np.sum(self.matrix,1)
+    def SomarLinhasVerticais(self, matrix):
+        self.matrix = matrix
+        return np.sum(self.matrix,0)
+    def SomarDiagonal(self, matrix):
+        self.matrix = matrix
+        diagonal = np.diagonal(self.matrix)
+        return  np.sum(diagonal)
+    def SomarAntiDiagonal(self, matrix):
+        self.matrix = matrix
+        anti_diagonal = np.fliplr(self.matrix).diagonal()
+        return np.sum(anti_diagonal)
+    def comparar_linha_com_coluna(self,linha,coluna):
+        self.linha = linha
+        self.coluna = coluna
+        return np.array_equal(self.linha,self.coluna)
+
+
+matrix = Matrix()
+permutacoes = matrix.Embaralhar()
+
+for matrizes in permutacoes:
+    quadrado_magico = matrix.CriarMatrix(matrizes)
+    diag = matrix.SomarDiagonal(quadrado_magico)
+    anti_diag = matrix.SomarAntiDiagonal(quadrado_magico)
     
-# criar o vetor com a soma total de cada linha [lt1 lt2 lt3]
-def somar_linhas (matrix):
-    linha = np.sum(matrix, axis=1)
-    return linha
-# criar o vetor com a soma total de cada coluna [ct1 ct2 ct3]
-def somar_coluna (matrix):
-    coluna = np.sum(matrix, axis=0)
-    return coluna
-# criar dois vetores com os elementos de cada diagonal [d1 d2 d3] , [a_d1,a_d2,a_d3]
-def diagonais(matrix):
-    diagonal_normal = np.diagonal(matrix)
-    anti_diagonal = np.fliplr(matrix).diagonal()
-    return diagonal_normal, anti_diagonal
-# 2 números que representam a soma total dos elementos dos vetores da diagonal [d1 d2 d3] = dt e [a_d1,a_d2,a_d3] =a_dt
-def somar_diagonais (diagonal, anti_diagonal):
-    somar_diagonal = np.sum(diagonal)
-    somar_anti = np.sum(anti_diagonal)
-    return somar_diagonal, somar_anti
-
-lista = [1,2,3,4,5,6,7,8,9] 
-# Criando a lista
-lista_vetor = np.array([lista])
-novo_vetor = embaralhar(lista)
-
-nova_lista = np.append(lista_vetor,novo_vetor, axis=0)
-print(nova_lista)
-
-for i in range(10):
-    for lista in nova_lista:
-        comparacao = np.array_equal([np.array(lista)],np.array(novo_vetor))
-        if comparacao == True :
-            print (f"{lista} e {novo_vetor}")
-            break
+    if diag == anti_diag:
+        linha = matrix.SomarLinhasHorizontais(quadrado_magico)
+        coluna = matrix.SomarLinhasVerticais(quadrado_magico)
+        comparar = matrix.comparar_linha_com_coluna(linha,coluna)
+        if comparar == True:
+            if diag == linha[0]:
+                print("quadrado_magico: ", diag,linha[0])
+            else:
+                pass
         else:
-            continue
-    novo_vetor = embaralhar(lista)
-    nova_lista = np.append(lista_vetor,novo_vetor, axis=0)
-    lista_vetor = nova_lista
-print(nova_lista)
+            pass
+    else:
+        pass
+
+
+

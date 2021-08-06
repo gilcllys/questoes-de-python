@@ -1,1 +1,0 @@
-np.fliplr(self.matrix).diagonal()

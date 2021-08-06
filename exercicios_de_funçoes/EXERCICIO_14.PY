@@ -9,12 +9,10 @@
 
 
 # ALGORITMO INCOMPLETO
-from typing import Tuple
 import numpy as np
 from random import*
 import itertools
 
-from numpy.core.fromnumeric import diagonal
 
 
 class Matrix:
@@ -50,7 +48,14 @@ class Matrix:
     def comparar_linha_com_coluna(self,linha,coluna):
         self.linha = linha
         self.coluna = coluna
-        return np.array_equal(self.linha,self.coluna)
+        if self.linha[0] == self.linha[1] and self.linha[0] == self.linha[2]:
+            if self.linha[0] == self.coluna[0] and self.linha[0] == self.coluna[1] and self.linha[0] == self.coluna[2]:
+                return True
+            else:
+                 return False 
+        else:
+            return False
+
 
 
 matrix = Matrix()
@@ -67,7 +72,13 @@ for matrizes in permutacoes:
         comparar = matrix.comparar_linha_com_coluna(linha,coluna)
         if comparar == True:
             if diag == linha[0]:
-                print("quadrado_magico: ", diag,linha[0])
+                print("quadrado_magico: ")
+                print(quadrado_magico)
+                print("Soma de elementos da linha: ", linha)
+                print("Soma de elementos da coluna: ", coluna)
+                print("Diagonal: ",np.diagonal(quadrado_magico)," soma total: ", diag)
+                print("Ant-diagonal: ",np.fliplr(quadrado_magico).diagonal()," soma total: ", anti_diag)
+                print("***********************************************************************")
             else:
                 pass
         else:
